@@ -15,7 +15,6 @@ add_action('wp_enqueue_scripts', 'fictional_university_files');
 function fictional_university_features()
 {
   add_theme_support('title-tag');
-  // register_nav_menu('headerMenuLocation', 'Header Menu Location');
 }
 
 add_action('after_setup_theme', 'fictional_university_features');

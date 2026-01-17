@@ -14,7 +14,7 @@ function fictional_university_custom_post_types()
       'singular_name' => 'Event'
     ),
     'menu_icon' => 'dashicons-calendar',
-    'supports' => array('title', 'editor', 'excerpt'),
+    'supports' => array('title', 'editor', 'excerpt', 'custom-fields'),
     'has_archive' => true,
     'rewrite' => array('slug' => 'events')
   ));

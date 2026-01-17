@@ -22,3 +22,27 @@ function fictional_university_features()
 
 add_action('after_setup_theme', 'fictional_university_features');
 //================= End of Theme Support =================//
+
+
+//================= Manipulate Default URL Based Queries/Archive Event =================//
+function fictional_university_adjust_queries($query)
+{
+  if (!is_admin() and is_post_type_archive('event') and $query->is_main_query()) {
+    $today = date('Ymd');
+    $query->set('meta_key', 'event_date');
+    $query->set('orderby', 'meta_value_num');
+    $query->set('order', 'ASC');
+    $query->set('order', 'ASC');
+    $query->set('meta_query', array(
+      array(
+        'key' => 'event_date',
+        'compare' => '>=',
+        'value' => $today,
+        'type' => 'NUMERIC'
+      )
+    ));
+  }
+}
+
+add_action('pre_get_posts', 'fictional_university_adjust_queries');
+//================= End ofManipulate Default URL Based Queries =================//

@@ -27,11 +27,17 @@ add_action('after_setup_theme', 'fictional_university_features');
 //================= Manipulate Default URL Based Queries/Archive Event =================//
 function fictional_university_adjust_queries($query)
 {
-  if (!is_admin() and is_post_type_archive('event') and $query->is_main_query()) {
+  if (!is_admin() and is_post_type_archive('program') and $query->is_main_query()) { // to order programs alphabetically
+    $query->set('orderby', 'title');
+    $query->set('order', 'ASC');
+    $query->set('posts_per_page', -1);
+  }
+
+
+  if (!is_admin() and is_post_type_archive('event') and $query->is_main_query()) { // to hide past events
     $today = date('Ymd');
     $query->set('meta_key', 'event_date');
     $query->set('orderby', 'meta_value_num');
-    $query->set('order', 'ASC');
     $query->set('order', 'ASC');
     $query->set('meta_query', array(
       array(

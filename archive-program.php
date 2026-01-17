@@ -15,17 +15,8 @@
 <div class="container container--narrow page-section">
   <ul class="link-list min-list">
     <?php
-    $args = array(
-      'post_type' => 'program',
-      'posts_per_page' => -1,
-      'orderby' => 'title',
-      'order' => 'ASC'
-    );
-
-    $programs = new WP_Query($args);
-
-    while ($programs->have_posts()) {
-      $programs->the_post(); ?>
+    while (have_posts()) {
+      the_post(); ?>
       <li><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></li>
 
     <?php  }

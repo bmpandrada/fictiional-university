@@ -38,6 +38,8 @@
   wp_reset_postdata();
   echo paginate_links();
   ?>
+  <hr class="section-break">
+  <p>Looking for a recap of past events? <a href="<?php echo esc_url(site_url('/past-events')); ?>">See our past events</a>.</p>
 </div>
 
 <!-- End Content -->

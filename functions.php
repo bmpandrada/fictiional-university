@@ -33,7 +33,6 @@ function fictional_university_adjust_queries($query)
     $query->set('posts_per_page', -1);
   }
 
-
   if (!is_admin() and is_post_type_archive('event') and $query->is_main_query()) { // to hide past events
     $today = date('Ymd');
     $query->set('meta_key', 'event_date');

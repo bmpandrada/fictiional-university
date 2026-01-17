@@ -27,6 +27,7 @@ while (have_posts()) {
   </div>
 
 <?php }
+wp_reset_postdata();
 //  <!-- End Content -->
 get_footer();
 ?>

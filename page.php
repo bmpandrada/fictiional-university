@@ -1,5 +1,4 @@
 <?php get_header();
-
 // <!-- Main Content -->
 while (have_posts()) {
   the_post();
@@ -8,15 +7,10 @@ while (have_posts()) {
     'subtitle' => get_field('page_banner_subtitle'),
   );
   pageBanner($details);  ?>
-
-
-
   <div class="container container--narrow page-section">
-
     <?php
     $theParent = wp_get_post_parent_id(get_the_ID());
     if ($theParent) {  ?>
-
       <div class="metabox metabox--position-up metabox--with-home-link">
         <p>
           <a class="metabox__blog-home-link" href="<?php echo get_the_permalink($theParent) ?>"><i class="fa fa-home" aria-hidden="true">
@@ -24,16 +18,13 @@ while (have_posts()) {
           <span class="metabox__main"><?php the_title(); ?></span>
         </p>
       </div>
-
     <?php }
     ?>
-
     <!-- side nav box -->
     <?php
     $getPagesArray = get_pages(array( // return an array of pages
       'child_of' => get_the_ID()
     ));
-
     if ($theParent or $getPagesArray) { ?>
       <div class="page-links">
         <h2 class="page-links__title"><a href="<?php echo get_the_permalink($theParent); ?>"><?php echo get_the_title($theParent); ?></a></h2>
@@ -56,14 +47,12 @@ while (have_posts()) {
       </div>
     <?php } ?>
     <!-- side nav box end -->
-
     <div class="generic-content">
       <?php the_content(); ?>
     </div>
   </div>
 <?php }
 wp_reset_postdata();
-
 // <!-- End Content -->
 get_footer();
 ?>

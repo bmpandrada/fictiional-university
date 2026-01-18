@@ -1,7 +1,5 @@
 <?php get_header();
-
 // <!-- Main Content -->
-
 while (have_posts()) {
   the_post();
   $details = array(
@@ -9,9 +7,6 @@ while (have_posts()) {
     'subtitle' => get_field('page_banner_subtitle'),
   );
   pageBanner($details);  ?>
-
-
-
   <div class="container container--narrow page-section">
     <div class="generic-content">
       <div class="row group">
@@ -39,7 +34,6 @@ while (have_posts()) {
     </div>
   </div>
 <?php }
-
 //  <!-- End Content -->
 get_footer();
 ?>

@@ -1,15 +1,8 @@
 <?php get_header();
-
 // <!-- Main Content -->
-
 while (have_posts()) {
   the_post();
-  $details = array(
-    'title' => get_the_title(),
-    'subtitle' => get_field('page_banner_subtitle'),
-  );
-  pageBanner($details);  ?>
-
+  pageBanner();  ?>
   <div class="container container--narrow page-section">
     <div class="metabox metabox--position-up metabox--with-home-link">
       <p>
@@ -35,7 +28,6 @@ while (have_posts()) {
       </ul>
     <?php } ?>
   </div>
-
 <?php }
 wp_reset_postdata();
 //  <!-- End Content -->

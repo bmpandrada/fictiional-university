@@ -3,23 +3,15 @@
 // <!-- Main Content -->
 
 while (have_posts()) {
-  the_post(); ?>
-  <div class="page-banner">
-    <div class="page-banner__bg-image"
-      style="background-image: url(
-      <?php
-      $pageBanner = get_field('page_banner_background_image'); // from field ACF
-      echo esc_url($pageBanner['sizes']['pageBanner']); ?>)">
-    </div>
+  the_post();
+  $details = array(
+    'title' => get_the_title(),
+    'subtitle' => get_field('page_banner_subtitle'),
+  );
+  pageBanner($details);  ?>
 
-    <!-- for checking array  <?php print_r($pageBanner); ?> -->
-    <div class="page-banner__content container container--narrow">
-      <h1 class="page-banner__title"><?php the_title(); ?></h1>
-      <div class="page-banner__intro">
-        <p><?php the_field('page_banner_subtitle') ?></p>
-      </div>
-    </div>
-  </div>
+
+
   <div class="container container--narrow page-section">
     <div class="generic-content">
       <div class="row group">

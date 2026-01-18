@@ -1,6 +1,6 @@
 <?php
 //================= Page Banner Function =================//
-function pageBanner($args)
+function pageBanner($args = NULL)
 {
   if (!isset($args['title'])) {
     $args['title'] = get_the_title();
@@ -8,7 +8,6 @@ function pageBanner($args)
   if (!isset($args['subtitle'])) {
     $args['subtitle'] = get_field('page_banner_subtitle');
   }
-
   if (!isset($args['photo'])) {
     if (get_field('page_banner_background_image') and !is_archive() and !is_home()) {
       $args['photo'] = get_field('page_banner_background_image')['sizes']['pageBanner'];
@@ -16,7 +15,6 @@ function pageBanner($args)
       $args['photo'] = get_theme_file_uri('/images/ocean.jpg');
     }
   }
-
 ?>
 
   <div class="page-banner">
@@ -32,8 +30,6 @@ function pageBanner($args)
       </div>
     </div>
   </div>
-
-
 <?php }
 //================= End of Page Banner Function =================//
 ?>

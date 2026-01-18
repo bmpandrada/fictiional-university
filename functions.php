@@ -1,4 +1,46 @@
 <?php
+//================= Page Banner Function =================//
+function pageBanner($args)
+{
+  if (!isset($args['title'])) {
+    $args['title'] = get_the_title();
+  }
+  if (!isset($args['subtitle'])) {
+    $args['subtitle'] = get_field('page_banner_subtitle');
+  }
+
+  if (!isset($args['photo'])) {
+    if (get_field('page_banner_background_image') and !is_archive() and !is_home()) {
+      $args['photo'] = get_field('page_banner_background_image')['sizes']['pageBanner'];
+    } else {
+      $args['photo'] = get_theme_file_uri('/images/ocean.jpg');
+    }
+  }
+
+?>
+
+  <div class="page-banner">
+    <div class="page-banner__bg-image"
+      style="background-image: url(
+      <?php echo $args['photo']; ?>)">
+    </div>
+
+    <div class="page-banner__content container container--narrow">
+      <h1 class="page-banner__title"><?php echo $args['title']; ?></h1>
+      <div class="page-banner__intro">
+        <p><?php echo $args['subtitle']; ?></p>
+      </div>
+    </div>
+  </div>
+
+
+<?php }
+//================= End of Page Banner Function =================//
+?>
+
+
+
+<?php
 //================= Enqueue Scripts and Styles =================//
 function fictional_university_files()
 {
@@ -30,6 +72,7 @@ add_action('after_setup_theme', 'fictional_university_features');
 //================= End of Theme Support =================//
 
 
+
 //================= Manipulate Default URL Based Queries/Archive Event =================//
 function fictional_university_adjust_queries($query)
 {
@@ -57,3 +100,4 @@ function fictional_university_adjust_queries($query)
 
 add_action('pre_get_posts', 'fictional_university_adjust_queries');
 //================= End ofManipulate Default URL Based Queries =================//
+?>

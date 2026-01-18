@@ -18,6 +18,12 @@ add_action('wp_enqueue_scripts', 'fictional_university_files');
 function fictional_university_features()
 {
   add_theme_support('title-tag');
+  // <!-- Enable featured image support: Plugin use: Regenerate Thumbnails -->
+  // <!--Manual Image Crop By Tomasz Sitar to set custom image sizes-->
+  add_theme_support('post-thumbnails');
+  add_image_size('professorLandscape', 400, 260, true);
+  add_image_size('professorPortrait', 480, 650, true);
+  add_image_size('pageBanner', 1500, 350, true);
 }
 
 add_action('after_setup_theme', 'fictional_university_features');
